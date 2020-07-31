@@ -1,0 +1,24 @@
+{
+  "name": "forge-show",
+  "version": "0.1.0",
+  "description": "Tool to automate the process of deploying and creating screenshots/screencasts to demo your Atlassian Forge apps",
+  "author": "Ngoc Dao",
+  "license": "ISC",
+  "homepage": "https://github.com/ngocdaothanh/forge-show",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ngocdaothanh/forge-show.git"
+  },
+  "keywords": [
+    "atlassian",
+    "forge",
+    "demo",
+    "screenshot",
+    "screencast"
+  ],
+  "dependencies": {
+    "keytar": "^6.0.1",
+    "puppeteer": "^5.2.1"
+  }
+}
