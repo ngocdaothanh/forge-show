@@ -45,6 +45,10 @@ const main = async () => {
     await page.waitFor(buttonSelector)
     await page.click(buttonSelector)
     await page.waitFor(10000)
+
+    // Take screenshot
+    const body = await page.$('.ak-renderer-document')
+    await body.screenshot({path: './body.png'})
   })
 }
 
