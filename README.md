@@ -28,16 +28,28 @@ Add to the `scripts` section in package.json of your Forge app:
 ## forge-show.js example
 
 ```js
-const show = require('forge-show')
+const {deploy, launchPage} = require('forge-show')
 
-const PAGE_URL = 'https://site.atlassian.net/page/where/you/have/installed/the/app'
 const ENVIRONMENT = 'development'
+const PAGE_URL = 'https://site.atlassian.net/page/where/you/have/installed/the/app'
 
-// It's show time, do whatever you want to show!
-// page: https://github.com/puppeteer/puppeteer/blob/main/docs/api.md
-show(PAGE, ENVIRONMENT, (page) => {
+const main = async () => {
+  await deploy(ENVIRONMENT)
 
-})
+  // It's show time, do whatever you want to show!
+  // page: https://github.com/puppeteer/puppeteer/blob/main/docs/api.md
+  await launchPage(PAGE_URL, async (page) => {
+    // Click the "spin" button and wait for it to spin
+    // https://bitbucket.org/atlassian/forge-wheel-of-fortune
+    const xpath = '//*[@id="main-content"]//*[contains(text(), "spin")]'
+    await page.waitForXPath(xpath)
+    const [button] = await page.$x(xpath)
+    await button.click()
+    await page.waitFor(10000)
+  })
+}
+
+main()
 ```
 
 ## Run

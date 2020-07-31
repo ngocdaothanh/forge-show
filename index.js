@@ -1,9 +1,7 @@
 const {launchBrowser, newPage} = require('./browser')
 const {deploy} = require('./forge')
 
-const show = async (pageUrl, env, showFn) => {
-  await deploy(env)
-
+const launchPage = async (pageUrl, showFn) => {
   const browser = await launchBrowser()
 
   const page = await newPage(browser, pageUrl)
@@ -12,4 +10,9 @@ const show = async (pageUrl, env, showFn) => {
   await browser.close()
 }
 
-module.exports = show
+module.exports = {
+  deploy,
+  launchBrowser,
+  newPage,
+  launchPage
+}
