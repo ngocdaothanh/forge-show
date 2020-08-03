@@ -41,7 +41,7 @@ const main = async () => {
   await launchPage(PAGE_URL, async (page) => {
     // Click the "spin" button and wait for it to spin
     // https://bitbucket.org/atlassian/forge-wheel-of-fortune
-    const buttonSelector = '#main-content .ak-renderer-extension button'
+    const buttonSelector = '[data-testid="ForgeExtensionContainer"] button'
     await page.waitFor(buttonSelector)
     await page.click(buttonSelector)
     await page.waitFor(10000)
